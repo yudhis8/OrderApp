@@ -2,16 +2,18 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ButtonComponent, HeaderComponent} from '../../component';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import ListProduct from './section/listProduct.sc';
 
 const HomeScreen = props => {
   return (
     <>
-      <HeaderComponent title={'List Note'} />
+      <HeaderComponent title={'Product List'} />
+      <ListProduct />
       <ButtonComponent
         style={styles.buttonFly}
         onPress={() => props.navigation.navigate('CreateNote')}>
-        <MaterialIcons name="create" size={24} color="#fff" />
+        <FontAwesome name="shopping-bag" size={20} color="black" />
       </ButtonComponent>
     </>
   );

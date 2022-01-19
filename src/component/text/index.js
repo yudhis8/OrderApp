@@ -22,7 +22,8 @@ const TextComponent = props => {
     color: props?.color ? props?.color : '#000',
     backgroundColor: props?.backgroundColor ? props?.backgroundColor : null,
     fontSize: props?.size ? props?.size : 14,
-    fontWeight: props?.type ? props?.type : 'normal',
+    fontWeight: props?.fontWeight ? props?.fontWeight : 'normal',
+    width: props?.width ? props?.width : null,
   };
   const {children, title} = props;
 
@@ -50,6 +51,7 @@ TextComponent.propTypes = {
   ]),
   decorationColor: PropTypes.string,
   fontWeight: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default memo(TextComponent);

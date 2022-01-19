@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const ArchivedScreen = props => {
   return (
     <>
-      <HeaderComponent title={'Settings'} />
+      <HeaderComponent title={'Chat'} />
     </>
   );
 };

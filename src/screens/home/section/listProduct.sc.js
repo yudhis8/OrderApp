@@ -4,26 +4,32 @@ import {useDispatch, useSelector} from 'react-redux';
 // import {archived, favorite} from '../../../redux/actions/note';
 import ListItem from './listItem.sc';
 
-const ListOrder = props => {
+const ListProduct = props => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
-  const setAction = useCallback((type, data) => {}, [dispatch]);
+  const setAction = useCallback(
+    (type, data) => {
+      // if (type == 1) {
+      //   dispatch(favorite(data));
+      // } else {
+      //   dispatch(archived(data));
+      // }
+    },
+    [dispatch],
+  );
   return (
     <>
       <FlatList
-        data={state?.note?.dataList}
+        data={[1, 2]}
         renderItem={({item, index}) => {
-          if (item?.is_favorite) {
-            return (
-              <ListItem
-                item={item}
-                key={'ListOrder' + index}
-                navigation={props.navigation}
-                menuAction={(type, data) => setAction(type, data)}
-              />
-            );
-          }
-          return null;
+          return (
+            <ListItem
+              item={item}
+              key={'ListProduk' + index}
+              navigation={props.navigation}
+              menuAction={(type, data) => setAction(type, data)}
+            />
+          );
         }}
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={{
@@ -31,6 +37,8 @@ const ListOrder = props => {
           flexGrow: 1,
         }}
         showsVerticalScrollIndicator={false}
+        numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
         // onEndReached={onEndReached}
         onEndReachedThreshold={0.01}
       />
@@ -38,4 +46,4 @@ const ListOrder = props => {
   );
 };
 
-export default ListOrder;
+export default ListProduct;

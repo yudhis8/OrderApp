@@ -4,6 +4,7 @@ import HomeScreen from '../screens/home';
 import Entypo from 'react-native-vector-icons/Entypo';
 import OrderScreen from '../screens/order';
 import SettingsScreen from '../screens/settings';
+import ChatScreen from '../screens/chat';
 const tabBarOptions = {
   labelStyle: {
     fontSize: 16,
@@ -46,10 +47,20 @@ const TabNavigation = () => {
           tabBarLabel: 'Order',
           tabBarIcon: ({focused}) => (
             <Entypo
-              name="heart-outlined"
+              name="credit"
               size={24}
               color={focused ? 'blue' : 'black'}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{
+          tabBarLabel: 'Chat',
+          tabBarIcon: ({focused}) => (
+            <Entypo name="chat" size={24} color={focused ? 'blue' : 'black'} />
           ),
         }}
       />
@@ -59,11 +70,7 @@ const TabNavigation = () => {
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({focused}) => (
-            <Entypo
-              name="archive"
-              size={24}
-              color={focused ? 'blue' : 'black'}
-            />
+            <Entypo name="tools" size={24} color={focused ? 'blue' : 'black'} />
           ),
         }}
       />

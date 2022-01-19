@@ -8,13 +8,8 @@ import ListOrder from './section/listOrder.sc';
 const OrderScreen = props => {
   return (
     <>
-      <HeaderComponent title={'Favorite Note'} />
+      <HeaderComponent title={'Your Order'} />
       <ListOrder />
-      <ButtonComponent
-        style={styles.buttonFly}
-        onPress={() => props.navigation.navigate('CreateNote')}>
-        <MaterialIcons name="create" size={24} color="#fff" />
-      </ButtonComponent>
     </>
   );
 };

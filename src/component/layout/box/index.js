@@ -37,6 +37,7 @@ const BoxComponent = props => {
     shadowRadius: props?.shadow ? 3 : 0,
     elevation: props?.shadow ? 3 : 0,
     flex: props?.flex ? props.flex : undefined,
+    position: props?.position ? props.position : undefined,
   };
   const {children} = props;
 
@@ -70,6 +71,7 @@ BoxComponent.propTypes = {
   height: PropTypes.number,
   borderWidth: PropTypes.number,
   borderColor: PropTypes.string,
+  position: PropTypes.string,
   borderRadius: PropTypes.number,
   backgroundColor: PropTypes.string,
   shadow: PropTypes.bool,

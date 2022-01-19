@@ -1,15 +1,19 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ButtonComponent, HeaderComponent} from '../../component';
+import {BoxComponent, ButtonComponent, HeaderComponent} from '../../component';
+import ProductListSection from './section/productList.sc';
+import TitleAreaSection from './section/titleArea.sc';
+import TrackingSection from './section/tracking.sc';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import ListOrder from './section/listOrder.sc';
-
-const OrderScreen = props => {
+const DetailOrder = props => {
   return (
     <>
-      <HeaderComponent title={'Your Order'} />
-      <ListOrder {...props} />
+      <HeaderComponent title={'Details'} backButton={true} />
+      <BoxComponent padding={20}>
+        <TitleAreaSection />
+        <ProductListSection />
+        <TrackingSection />
+      </BoxComponent>
     </>
   );
 };
@@ -36,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OrderScreen;
+export default DetailOrder;

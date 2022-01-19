@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import TabNavigation from './Tab.navigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import LoginScreen from '../screens/login';
+import DetailOrder from '../screens/detailOrder';
 
 const Stack = createNativeStackNavigator();
 const HomeNavigation = ({params}) => {
@@ -12,6 +12,7 @@ const HomeNavigation = ({params}) => {
       initialRouteName="Home"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={TabNavigation} />
+      <Stack.Screen name="DetailOrder" component={DetailOrder} />
     </Stack.Navigator>
   );
 };

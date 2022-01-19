@@ -26,10 +26,12 @@ const RowComponent = props => {
           height: 2,
         }
       : {},
-    shadowOpacity: props?.shadow ? 0.3 : 0,
-    shadowRadius: props?.shadow ? 3 : 0,
-    elevation: props?.shadow ? 3 : 0,
-    backgroundColor: props?.backgroundColor ? props?.backgroundColor : '#fff',
+    shadowOpacity: props?.shadow ? 0.3 : undefined,
+    shadowRadius: props?.shadow ? 3 : undefined,
+    elevation: props?.shadow ? 3 : undefined,
+    backgroundColor: props?.backgroundColor
+      ? props?.backgroundColor
+      : undefined,
   };
   const {children} = props;
 

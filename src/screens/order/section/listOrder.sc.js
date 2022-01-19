@@ -11,19 +11,16 @@ const ListOrder = props => {
   return (
     <>
       <FlatList
-        data={state?.note?.dataList}
+        data={[1, 2]}
         renderItem={({item, index}) => {
-          if (item?.is_favorite) {
-            return (
-              <ListItem
-                item={item}
-                key={'ListOrder' + index}
-                navigation={props.navigation}
-                menuAction={(type, data) => setAction(type, data)}
-              />
-            );
-          }
-          return null;
+          return (
+            <ListItem
+              item={item}
+              key={'ListOrder' + index}
+              navigation={props.navigation}
+              menuAction={(type, data) => setAction(type, data)}
+            />
+          );
         }}
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={{

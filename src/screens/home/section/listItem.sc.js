@@ -47,8 +47,8 @@ const ListItem = props => {
           alignItems="center"
           backgroundColor="blue"
           borderRadius={25}
-          ptop={10}
-          pbot={10}
+          ptop={5}
+          pbot={5}
           mtop={20}
           width={80}>
           <TextComponent>+ Add</TextComponent>

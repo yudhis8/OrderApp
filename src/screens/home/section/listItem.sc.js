@@ -51,7 +51,7 @@ const ListItem = props => {
           pbot={5}
           mtop={20}
           width={80}>
-          <TextComponent>+ Add</TextComponent>
+          <TextComponent color="#fff">+ Add</TextComponent>
         </ButtonComponent>
         <RowComponent
           alignItems="center"
@@ -65,7 +65,7 @@ const ListItem = props => {
             backgroundColor="blue"
             borderRadius={25}
             width={30}>
-            <TextComponent>+ </TextComponent>
+            <TextComponent color="#fff">+ </TextComponent>
           </ButtonComponent>
           <TextComponent>1</TextComponent>
           <ButtonComponent
@@ -75,7 +75,7 @@ const ListItem = props => {
             backgroundColor="blue"
             borderRadius={25}
             width={30}>
-            <TextComponent>-</TextComponent>
+            <TextComponent color="#fff">-</TextComponent>
           </ButtonComponent>
         </RowComponent>
       </ButtonComponent>

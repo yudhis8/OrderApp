@@ -4,6 +4,7 @@ import TabNavigation from './Tab.navigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import DetailOrder from '../screens/detailOrder';
+import DetailChat from '../screens/detailChat';
 
 const Stack = createNativeStackNavigator();
 const HomeNavigation = ({params}) => {
@@ -13,6 +14,7 @@ const HomeNavigation = ({params}) => {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={TabNavigation} />
       <Stack.Screen name="DetailOrder" component={DetailOrder} />
+      <Stack.Screen name="DetailChat" component={DetailChat} />
     </Stack.Navigator>
   );
 };

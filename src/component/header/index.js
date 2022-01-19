@@ -10,7 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import PropTypes from 'prop-types';
 
 const HeaderComponent = props => {
-  const {title, backButton, rightButton} = props;
+  const {title, backButton, backButtonPress, rightButton} = props;
   return (
     <RowComponent
       justify={'space-between'}
@@ -20,7 +20,7 @@ const HeaderComponent = props => {
       <BoxComponent pleft={10}>
         <RowComponent alignItems={'center'}>
           {backButton && (
-            <ButtonComponent>
+            <ButtonComponent onPress={backButtonPress}>
               <Ionicons name="chevron-back-outline" size={24} color="black" />
             </ButtonComponent>
           )}
@@ -42,6 +42,7 @@ const HeaderComponent = props => {
 HeaderComponent.propsType = {
   title: PropTypes.string,
   backButton: PropTypes.bool,
+  backButtonPress: PropTypes.func,
   rightButton: PropTypes.bool,
 };
 

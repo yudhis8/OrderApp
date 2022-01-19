@@ -8,7 +8,11 @@ import TrackingSection from './section/tracking.sc';
 const DetailOrder = props => {
   return (
     <>
-      <HeaderComponent title={'Details'} backButton={true} />
+      <HeaderComponent
+        title={'Details'}
+        backButton={true}
+        backButtonPress={() => props.navigation.goBack()}
+      />
       <BoxComponent padding={20}>
         <TitleAreaSection />
         <ProductListSection />

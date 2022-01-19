@@ -1,13 +1,45 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ButtonComponent, HeaderComponent} from '../../component';
+import {
+  BoxComponent,
+  ButtonComponent,
+  HeaderComponent,
+  RowComponent,
+  TextComponent,
+} from '../../component';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useDispatch} from 'react-redux';
+import {logoutAction} from 'redux/actions/auth';
 
 const ArchivedScreen = props => {
+  const dispatch = useDispatch();
   return (
     <>
       <HeaderComponent title={'Settings'} />
+      <BoxComponent alignItems="center">
+        <BoxComponent
+          borderRadius={10}
+          backgroundColor={'#fff'}
+          shadow
+          width={'80%'}
+          padding={10}
+          mtop={10}>
+          <ButtonComponent onPress={() => dispatch(logoutAction())}>
+            <RowComponent
+              width={'100%'}
+              justify="space-between"
+              alignItems="center">
+              <TextComponent>Logout</TextComponent>
+              <MaterialIcons
+                name="keyboard-arrow-right"
+                size={24}
+                color="black"
+              />
+            </RowComponent>
+          </ButtonComponent>
+        </BoxComponent>
+      </BoxComponent>
     </>
   );
 };

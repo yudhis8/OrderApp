@@ -29,3 +29,17 @@ export function authAction(data) {
     }
   };
 }
+
+export function logoutAction(data) {
+  return async dispatch => {
+    try {
+      dispatch({type: types.LOGOUT_AUTH_REQUEST});
+      auth.signOut().then(data => {
+        dispatch({type: types.LOGOUT_AUTH_SUCCESS});
+      });
+    } catch (error) {
+      console.log('🚀 ~ file: auth.js ~ line 29 ~ authAction ~ error', error);
+      dispatch({type: types.LOGOUT_AUTH_FAILED, message: error});
+    }
+  };
+}

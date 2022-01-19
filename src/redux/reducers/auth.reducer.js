@@ -27,6 +27,25 @@ const note = (state = initialState, action) => {
         fetching: false,
         error: action.message,
       };
+    case types.LOGOUT_AUTH_REQUEST:
+      return {
+        ...state,
+        fetching: true,
+        error: null,
+      };
+    case types.LOGOUT_AUTH_SUCCESS:
+      return {
+        ...state,
+        user: {},
+        fetching: false,
+        error: null,
+      };
+    case types.LOGOUT_AUTH_FAILED:
+      return {
+        ...state,
+        fetching: false,
+        error: action.message,
+      };
     default:
       return state;
   }

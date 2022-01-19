@@ -39,9 +39,9 @@ const BoxComponent = props => {
     flex: props?.flex ? props.flex : undefined,
     position: props?.position ? props.position : undefined,
   };
-  const {children} = props;
+  const {children, style} = props;
 
-  return <View style={[combineStyle]}>{children}</View>;
+  return <View style={[combineStyle, style]}>{children}</View>;
 };
 
 BoxComponent.propTypes = {
@@ -76,6 +76,7 @@ BoxComponent.propTypes = {
   backgroundColor: PropTypes.string,
   shadow: PropTypes.bool,
   flex: PropTypes.number,
+  style: PropTypes.object,
 };
 
 export default memo(BoxComponent);

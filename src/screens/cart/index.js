@@ -10,26 +10,15 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ListProduct from './section/listProduct.sc';
 
-const HomeScreen = props => {
+const CartScreen = props => {
   return (
     <>
-      <HeaderComponent title={'Product List'} />
+      <HeaderComponent title={'Cart List'} />
       <ListProduct />
       <ButtonComponent
         style={styles.buttonFly}
-        onPress={() => props.navigation.navigate('Cart')}>
-        <FontAwesome name="shopping-bag" size={20} color="black" />
-        <BoxComponent
-          backgroundColor="red"
-          width={25}
-          height={25}
-          borderRadius={25}
-          style={styles.redPostion}
-          justifyContent="center"
-          alignItems="center"
-          position="absolute">
-          <TextComponent color={'#fff'}>1</TextComponent>
-        </BoxComponent>
+        onPress={() => props.navigation.navigate('Order')}>
+        <TextComponent color="#fff">Pesan Sekarang</TextComponent>
       </ButtonComponent>
     </>
   );
@@ -38,14 +27,15 @@ const HomeScreen = props => {
 const styles = StyleSheet.create({
   buttonFly: {
     position: 'absolute',
-    bottom: 40,
-    right: 20,
+    bottom: 20,
+
     backgroundColor: '#54BFF8',
-    width: 50,
+    width: '50%',
     height: 50,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -62,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default CartScreen;

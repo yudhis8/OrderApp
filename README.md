@@ -3,12 +3,12 @@
 1. Clone project
 
    ```bash
-   git clone https://github.com/yudhis8/OrderApp
+   git clone https://github.com/yudhis8/OrderApp.git
    ```
 
 2. Enter directory project
    ```bash
-   cd orderApp
+   cd OrderApp
    ```
 3. Install depedencies
    ```bash

@@ -6,11 +6,13 @@ import {
   HeaderComponent,
   TextComponent,
 } from '../../component';
+import {useSelector} from 'react-redux';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ListProduct from './section/listProduct.sc';
 
 const HomeScreen = props => {
+  const cart = useSelector(state => state.cart);
   return (
     <>
       <HeaderComponent title={'Product List'} />
@@ -19,17 +21,19 @@ const HomeScreen = props => {
         style={styles.buttonFly}
         onPress={() => props.navigation.navigate('Cart')}>
         <FontAwesome name="shopping-bag" size={20} color="black" />
-        <BoxComponent
-          backgroundColor="red"
-          width={25}
-          height={25}
-          borderRadius={25}
-          style={styles.redPostion}
-          justifyContent="center"
-          alignItems="center"
-          position="absolute">
-          <TextComponent color={'#fff'}>1</TextComponent>
-        </BoxComponent>
+        {cart?.carts?.length > 0 && (
+          <BoxComponent
+            backgroundColor="red"
+            width={25}
+            height={25}
+            borderRadius={25}
+            style={styles.redPostion}
+            justifyContent="center"
+            alignItems="center"
+            position="absolute">
+            <TextComponent color={'#fff'}>{cart?.carts?.length}</TextComponent>
+          </BoxComponent>
+        )}
       </ButtonComponent>
     </>
   );

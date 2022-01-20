@@ -28,6 +28,18 @@ const db = firestore();
 //     alert(err.message);
 //   }
 // };
+const getDatabase = async dbname => {
+  const getDB = await db.collection(dbname).get();
+  let array = [];
+
+  getDB.docs.forEach(item => {
+    let id = item.id;
+    let data = item.data();
+
+    array.push({id, ...data});
+  });
+  return array;
+};
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
@@ -68,6 +80,7 @@ export {
   db,
   // messaging,
   // signInWithGoogle,
+  getDatabase,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,

@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const note = (state = initialState, action) => {
+const auth = (state = initialState, action) => {
   switch (action.type) {
     case types.LOGIN_AUTH_REQUEST:
       return {
@@ -51,4 +51,4 @@ const note = (state = initialState, action) => {
   }
 };
 
-export default note;
+export default auth;

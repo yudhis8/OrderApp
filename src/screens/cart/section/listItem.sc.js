@@ -41,18 +41,6 @@ const ListItem = props => {
         <TextComponent size={12} mtop={10}>
           Rp. 10.000
         </TextComponent>
-        <ButtonComponent
-          justifyContent="center"
-          alignSelf="center"
-          alignItems="center"
-          backgroundColor="blue"
-          borderRadius={25}
-          ptop={5}
-          pbot={5}
-          mtop={20}
-          width={80}>
-          <TextComponent color="#fff">+ Add</TextComponent>
-        </ButtonComponent>
         <RowComponent
           alignItems="center"
           mtop={20}

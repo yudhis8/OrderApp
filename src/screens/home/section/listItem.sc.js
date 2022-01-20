@@ -10,7 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 const ListItem = props => {
-  const {item, navigation, menuAction} = props;
+  const {item, navigation, onAddPress} = props;
 
   const onNavigate = useCallback(() => {
     navigation.navigate('DetailProduct', item);
@@ -24,6 +24,7 @@ const ListItem = props => {
       width={'48%'}
       padding={10}>
       <ButtonComponent
+        disabled={true}
         onPress={onNavigate}
         justifyContent="center"
         alignItems="center">
@@ -31,17 +32,19 @@ const ListItem = props => {
           <Image
             style={styles.image}
             source={{
-              uri: 'https://sc04.alicdn.com/kf/Ucdc0abc91279479997b7424b586424f2l.jpeg',
+              uri: item?.img,
             }}
           />
         </BoxComponent>
-        <TextComponent size={16} mtop={10} fontWeight="600">
-          Nuttela - Rasa Kacang Segar
+        <TextComponent textAlign="center" size={16} mtop={10} fontWeight="600">
+          {item?.name}
         </TextComponent>
         <TextComponent size={12} mtop={10}>
-          Rp. 10.000
+          Rp. {item?.price}
         </TextComponent>
         <ButtonComponent
+          onPress={onAddPress}
+          disabled={item?.selected}
           justifyContent="center"
           alignSelf="center"
           alignItems="center"
@@ -51,33 +54,10 @@ const ListItem = props => {
           pbot={5}
           mtop={20}
           width={80}>
-          <TextComponent color="#fff">+ Add</TextComponent>
+          <TextComponent color="#fff">
+            {item?.selected ? 'Added' : '+ Add'}
+          </TextComponent>
         </ButtonComponent>
-        <RowComponent
-          alignItems="center"
-          mtop={20}
-          justify="space-between"
-          width={'60%'}>
-          <ButtonComponent
-            justifyContent="center"
-            alignSelf="center"
-            alignItems="center"
-            backgroundColor="blue"
-            borderRadius={25}
-            width={30}>
-            <TextComponent color="#fff">+ </TextComponent>
-          </ButtonComponent>
-          <TextComponent>1</TextComponent>
-          <ButtonComponent
-            justifyContent="center"
-            alignSelf="center"
-            alignItems="center"
-            backgroundColor="blue"
-            borderRadius={25}
-            width={30}>
-            <TextComponent color="#fff">-</TextComponent>
-          </ButtonComponent>
-        </RowComponent>
       </ButtonComponent>
     </BoxComponent>
   );

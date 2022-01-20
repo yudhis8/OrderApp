@@ -38,6 +38,7 @@ const TrackingSection = props => {
   };
 
   const updateStatus = status => {
+    console.log('🚀 ~ file: tracking.sc.js ~ line 38 ~ status', status);
     setCurrentStatus(status);
     dispatch(
       updateOrderAction({
@@ -101,15 +102,48 @@ const TrackingSection = props => {
         );
       })}
       <RowComponent mtop={20}>
-        {currentStatus == 'Shipping' && (
+        {currentStatus == 'Pending' && (
           <ButtonComponent
-            onPress={() => updateStatus('Done')}
+            onPress={() => updateStatus('Process')}
             backgroundColor="blue"
             pleft={10}
             pright={10}
             ptop={10}
             pbot={10}>
-            <TextComponent color="#fff">Order Received</TextComponent>
+            <TextComponent color="#fff">Accept Order</TextComponent>
+          </ButtonComponent>
+        )}
+        {currentStatus == 'Pending' && (
+          <ButtonComponent
+            onPress={() => updateStatus('Reject')}
+            backgroundColor="red"
+            pleft={10}
+            pright={10}
+            ptop={10}
+            pbot={10}>
+            <TextComponent color="#fff">Reject Order</TextComponent>
+          </ButtonComponent>
+        )}
+        {currentStatus == 'Process' && (
+          <ButtonComponent
+            onPress={() => updateStatus('Packing')}
+            backgroundColor="green"
+            pleft={10}
+            pright={10}
+            ptop={10}
+            pbot={10}>
+            <TextComponent color="#fff">Packing Order</TextComponent>
+          </ButtonComponent>
+        )}
+        {currentStatus == 'Packing' && (
+          <ButtonComponent
+            onPress={() => updateStatus('Shipping')}
+            backgroundColor="yellow"
+            pleft={10}
+            pright={10}
+            ptop={10}
+            pbot={10}>
+            <TextComponent color="#000">Shipping</TextComponent>
           </ButtonComponent>
         )}
       </RowComponent>

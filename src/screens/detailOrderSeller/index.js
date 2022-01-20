@@ -1,11 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {
-  BoxComponent,
-  ButtonComponent,
-  HeaderComponent,
-  TextComponent,
-} from 'component';
+import {BoxComponent, ButtonComponent, HeaderComponent} from '../../component';
 import ProductListSection from './section/productList.sc';
 import TitleAreaSection from './section/titleArea.sc';
 import TrackingSection from './section/tracking.sc';
@@ -26,9 +21,6 @@ const DetailOrder = props => {
         <ProductListSection {...params} />
         <TrackingSection {...params} />
       </BoxComponent>
-      <ButtonComponent style={styles.buttonFly} onPress={() => {}}>
-        <TextComponent color="#fff">Tanya Penjual</TextComponent>
-      </ButtonComponent>
     </>
   );
 };
@@ -36,15 +28,14 @@ const DetailOrder = props => {
 const styles = StyleSheet.create({
   buttonFly: {
     position: 'absolute',
-    bottom: 20,
-
+    bottom: 40,
+    right: 20,
     backgroundColor: '#54BFF8',
-    width: '50%',
+    width: 50,
     height: 50,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

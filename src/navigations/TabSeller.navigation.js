@@ -1,0 +1,70 @@
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/home';
+import Entypo from 'react-native-vector-icons/Entypo';
+import OrderScreen from '../screens/orderSeller';
+import SettingsScreen from '../screens/settings';
+import ChatScreen from '../screens/chat';
+const tabBarOptions = {
+  labelStyle: {
+    fontSize: 16,
+    paddingTop: 5,
+  },
+  style: {
+    borderTopWidth: 0,
+    elevation: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    marginVertical: 15,
+  },
+  tabStyle: {
+    paddingBottom: 6,
+    paddingTop: 9,
+    marginTop: -6,
+    backgroundColor: 'white',
+  },
+};
+const Tab = createBottomTabNavigator();
+const TabNavigation = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{...tabBarOptions, headerShown: false}}
+      initialRouteName="Order">
+      <Tab.Screen
+        name="Order"
+        component={OrderScreen}
+        options={{
+          tabBarLabel: 'Order',
+          tabBarIcon: ({focused}) => (
+            <Entypo
+              name="credit"
+              size={24}
+              color={focused ? 'blue' : 'black'}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{
+          tabBarLabel: 'Chat',
+          tabBarIcon: ({focused}) => (
+            <Entypo name="chat" size={24} color={focused ? 'blue' : 'black'} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({focused}) => (
+            <Entypo name="tools" size={24} color={focused ? 'blue' : 'black'} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+export default TabNavigation;

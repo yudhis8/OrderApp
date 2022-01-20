@@ -125,6 +125,14 @@ const sendPasswordResetEmail = async email => {
     alert(err.message);
   }
 };
+const getCurrentUserDatabase = async (result, action) => {
+  const query = await db
+    .collection('users')
+    .where('uid', '==', result.user?.uid)
+    .get();
+
+  return query;
+};
 const logout = () => {
   auth.signOut();
 };
@@ -135,6 +143,7 @@ export {
   // signInWithGoogle,
   getDatabase,
   getDatabaseRealtime,
+  getCurrentUserDatabase,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,

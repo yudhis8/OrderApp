@@ -28,8 +28,8 @@ const db = firestore();
 //     alert(err.message);
 //   }
 // };
-const getDatabase = async dbname => {
-  const getDB = await db.collection(dbname).get();
+const getDatabase = async (dbname, options = {}) => {
+  const getDB = await filterDatabase(dbname, options);
   let array = [];
 
   getDB.docs.forEach(item => {
@@ -40,6 +40,59 @@ const getDatabase = async dbname => {
   });
   return array;
 };
+
+const filterDatabase = async (dbname, options = {}) => {
+  let {where, orderBy, limit} = options;
+  let query = db.collection(dbname);
+
+  if (where) {
+    if (where[0] instanceof Array) {
+      // It's an array of array
+      for (let w of where) {
+        query = query.where(...w);
+      }
+    } else {
+      query = query.where(...where);
+    }
+  }
+
+  if (orderBy) {
+    query = query.orderBy(...orderBy);
+  }
+
+  if (limit) {
+    query = query.limit(limit);
+  }
+
+  return query.get().then().catch();
+};
+
+const getDatabaseRealtime = async (dbname, options = {}) => {
+  let {where, orderBy, limit} = options;
+  let query = db.collection(dbname);
+
+  if (where) {
+    if (where[0] instanceof Array) {
+      // It's an array of array
+      for (let w of where) {
+        query = query.where(...w);
+      }
+    } else {
+      query = query.where(...where);
+    }
+  }
+
+  if (orderBy) {
+    query = query.orderBy(...orderBy);
+  }
+
+  if (limit) {
+    query = query.limit(limit);
+  }
+
+  return query;
+};
+
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     await auth.signInWithEmailAndPassword(email, password);
@@ -81,6 +134,7 @@ export {
   // messaging,
   // signInWithGoogle,
   getDatabase,
+  getDatabaseRealtime,
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordResetEmail,

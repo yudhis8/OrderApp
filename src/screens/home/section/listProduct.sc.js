@@ -10,11 +10,10 @@ const ListProduct = props => {
   const [currentIdCart, setCurrentIdCart] = useState(['0']);
 
   const state = useSelector(state => state);
-  console.log('🚀 ~ file: listProduct.sc.js ~ line 9 ~ state', state);
+
   const dispatch = useDispatch();
   const setAction = useCallback(
     item => {
-      console.log('🚀 ~ file: listProduct.sc.js ~ line 15 ~ item', item);
       dispatch(setCartAction(item));
     },
     [dispatch],
@@ -35,7 +34,6 @@ const ListProduct = props => {
   const productsMemo = useMemo(() => {
     return state?.product?.products.map(data => {
       data.selected = currentIdCart.includes(data.id);
-      console.log(data);
       return data;
     });
   }, [currentIdCart, state]);

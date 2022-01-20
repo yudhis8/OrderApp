@@ -28,8 +28,8 @@ const ListItem = props => {
         justifyContent="center"
         alignItems="center">
         <RowComponent justify="space-between" width={'100%'}>
-          <TextComponent>Miranjo Shop</TextComponent>
-          <TextComponent>Pending</TextComponent>
+          <TextComponent>{item?.store}</TextComponent>
+          <TextComponent>{item?.status}</TextComponent>
         </RowComponent>
         <RowComponent
           justify="space-between"
@@ -41,16 +41,20 @@ const ListItem = props => {
           </BoxComponent>
           <BoxComponent width={'60%'}>
             <TextComponent>Payment</TextComponent>
-            <TextComponent size={10}>#ID00123</TextComponent>
-            <TextComponent>24/02/22 09:00 AM</TextComponent>
+            <TextComponent size={10}>#{item?.id}</TextComponent>
+            <TextComponent>
+              {moment
+                .unix(item?.created_at?.seconds)
+                .format('DD/MM/YY HH:MM A')}
+            </TextComponent>
           </BoxComponent>
           <BoxComponent>
-            <TextComponent size={20}>10.000</TextComponent>
+            <TextComponent size={20}>Rp.{item?.total}</TextComponent>
           </BoxComponent>
         </RowComponent>
         <RowComponent justify="space-between" width={'100%'} mtop={10}>
-          <TextComponent>2 Product</TextComponent>
-          <TextComponent>Subtotal: 10000</TextComponent>
+          <TextComponent>{item?.products?.length} Product</TextComponent>
+          <TextComponent>Subtotal: Rp.{item?.subtotal}</TextComponent>
         </RowComponent>
       </ButtonComponent>
     </BoxComponent>

@@ -6,6 +6,9 @@ import TitleAreaSection from './section/titleArea.sc';
 import TrackingSection from './section/tracking.sc';
 
 const DetailOrder = props => {
+  const {
+    route: {params},
+  } = props;
   return (
     <>
       <HeaderComponent
@@ -14,9 +17,9 @@ const DetailOrder = props => {
         backButtonPress={() => props.navigation.goBack()}
       />
       <BoxComponent padding={20}>
-        <TitleAreaSection />
-        <ProductListSection />
-        <TrackingSection />
+        <TitleAreaSection {...params} />
+        <ProductListSection {...params} />
+        <TrackingSection {...params} />
       </BoxComponent>
     </>
   );

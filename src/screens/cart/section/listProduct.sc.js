@@ -1,7 +1,8 @@
 import React, {useCallback} from 'react';
 import {Text, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-// import {archived, favorite} from '../../../redux/actions/note';
+import {minusCartAction, setCartAction} from 'redux/actions/cart';
+
 import ListItem from './listItem.sc';
 
 const ListProduct = props => {
@@ -9,25 +10,25 @@ const ListProduct = props => {
   const dispatch = useDispatch();
   const setAction = useCallback(
     (type, data) => {
-      // if (type == 1) {
-      //   dispatch(favorite(data));
-      // } else {
-      //   dispatch(archived(data));
-      // }
+      if (type == 'plus') {
+        dispatch(setCartAction(data));
+      } else {
+        dispatch(minusCartAction(data));
+      }
     },
     [dispatch],
   );
   return (
     <>
       <FlatList
-        data={[1, 2]}
+        data={state?.cart?.carts}
         renderItem={({item, index}) => {
           return (
             <ListItem
               item={item}
               key={'ListProduk' + index}
               navigation={props.navigation}
-              menuAction={(type, data) => setAction(type, data)}
+              onActionPress={type => setAction(type, item)}
             />
           );
         }}

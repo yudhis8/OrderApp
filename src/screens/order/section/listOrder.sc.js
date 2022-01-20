@@ -1,17 +1,23 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Text, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {getOrderUserAction} from 'redux/actions/order';
 // import {archived, favorite} from '../../../redux/actions/note';
 import ListItem from './listItem.sc';
 
 const ListOrder = props => {
   const state = useSelector(state => state);
+  console.log('🚀 ~ file: listOrder.sc.js ~ line 10 ~ state', state.order);
+
   const dispatch = useDispatch();
   const setAction = useCallback((type, data) => {}, [dispatch]);
+  useEffect(() => {
+    dispatch(getOrderUserAction('orders'));
+  }, []);
   return (
     <>
       <FlatList
-        data={[1, 2]}
+        data={state?.order?.orders}
         renderItem={({item, index}) => {
           return (
             <ListItem

@@ -7,7 +7,6 @@ const initialState = {
 };
 
 function addItem(items, payload) {
-  console.log(items, payload);
   const isExist = items.find(item => item.id === payload.id);
 
   let result = items;
@@ -36,6 +35,21 @@ function addItem(items, payload) {
   return result;
 }
 
+function removeItem(items, payload) {
+  items.map(item => {
+    if (item.id == payload.id) {
+      item.qty--;
+      item.total = item.total - item.price;
+    }
+
+    return item;
+  });
+
+  const result = items.filter(item => item.qty > 0);
+
+  return result;
+}
+
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_CART_REQUEST:
@@ -52,6 +66,46 @@ const cart = (state = initialState, action) => {
         error: null,
       };
     case types.SET_CART_FAILED:
+      return {
+        ...state,
+        fetching: false,
+        error: action.message,
+      };
+
+    case types.MINUS_CART_REQUEST:
+      return {
+        ...state,
+        fetching: true,
+        error: null,
+      };
+    case types.MINUS_CART_SUCCESS:
+      return {
+        ...state,
+        carts: removeItem(state.carts, action.data),
+        fetching: false,
+        error: null,
+      };
+    case types.MINUS_CART_FAILED:
+      return {
+        ...state,
+        fetching: false,
+        error: action.message,
+      };
+
+    case types.REMOVE_CART_REQUEST:
+      return {
+        ...state,
+        fetching: true,
+        error: null,
+      };
+    case types.REMOVE_CART_SUCCESS:
+      return {
+        ...state,
+        carts: [],
+        fetching: false,
+        error: null,
+      };
+    case types.REMOVE_CART_FAILED:
       return {
         ...state,
         fetching: false,

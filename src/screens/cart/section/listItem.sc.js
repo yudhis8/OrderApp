@@ -10,7 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 const ListItem = props => {
-  const {item, navigation, menuAction} = props;
+  const {item, navigation, onActionPress} = props;
 
   const onNavigate = useCallback(() => {
     navigation.navigate('DetailProduct', item);
@@ -24,6 +24,7 @@ const ListItem = props => {
       width={'48%'}
       padding={10}>
       <ButtonComponent
+        disabled={true}
         onPress={onNavigate}
         justifyContent="center"
         alignItems="center">
@@ -31,15 +32,15 @@ const ListItem = props => {
           <Image
             style={styles.image}
             source={{
-              uri: 'https://sc04.alicdn.com/kf/Ucdc0abc91279479997b7424b586424f2l.jpeg',
+              uri: item?.img,
             }}
           />
         </BoxComponent>
         <TextComponent size={16} mtop={10} fontWeight="600">
-          Nuttela - Rasa Kacang Segar
+          {item?.name}
         </TextComponent>
         <TextComponent size={12} mtop={10}>
-          Rp. 10.000
+          Rp. {item?.price * item?.qty}
         </TextComponent>
         <RowComponent
           alignItems="center"
@@ -47,6 +48,7 @@ const ListItem = props => {
           justify="space-between"
           width={'60%'}>
           <ButtonComponent
+            onPress={() => onActionPress('plus')}
             justifyContent="center"
             alignSelf="center"
             alignItems="center"
@@ -55,8 +57,9 @@ const ListItem = props => {
             width={30}>
             <TextComponent color="#fff">+ </TextComponent>
           </ButtonComponent>
-          <TextComponent>1</TextComponent>
+          <TextComponent>{item?.qty}</TextComponent>
           <ButtonComponent
+            onPress={() => onActionPress('minus')}
             justifyContent="center"
             alignSelf="center"
             alignItems="center"

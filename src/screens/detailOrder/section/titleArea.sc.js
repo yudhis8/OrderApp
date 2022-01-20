@@ -1,7 +1,8 @@
 import {BoxComponent, RowComponent, TextComponent} from 'component';
+import moment from 'moment';
 import React from 'react';
 
-const TitleAreaSection = ({params}) => (
+const TitleAreaSection = props => (
   <BoxComponent
     borderRadius={10}
     backgroundColor={'#fff'}
@@ -10,12 +11,16 @@ const TitleAreaSection = ({params}) => (
     width={'100%'}
     padding={10}>
     <RowComponent justify="space-between">
-      <TextComponent>#ID00123</TextComponent>
-      <TextComponent>24 Feb, 2022</TextComponent>
+      <TextComponent>#{props?.id}</TextComponent>
+      <TextComponent>
+        {moment.unix(props?.created_at).format('DD MMM, YYYY')}
+      </TextComponent>
     </RowComponent>
     <RowComponent justify="space-between">
-      <TextComponent>10.000</TextComponent>
-      <TextComponent>04:00 AM</TextComponent>
+      <TextComponent>{props?.total}</TextComponent>
+      <TextComponent>
+        {moment.unix(props?.created_at).format('HH:mm A ')}
+      </TextComponent>
     </RowComponent>
   </BoxComponent>
 );

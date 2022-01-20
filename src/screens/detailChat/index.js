@@ -6,14 +6,18 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ListChatDetailSection from './section/listChatDetail.sc';
 
 const DetailChatScreen = props => {
+  const {
+    route: {params},
+  } = props;
+
   return (
     <>
       <HeaderComponent
-        title={'Miranjo Store'}
+        title={params?.name ? params?.name : params?.store}
         backButton={true}
         backButtonPress={() => props.navigation.goBack()}
       />
-      <ListChatDetailSection />
+      <ListChatDetailSection {...props} />
     </>
   );
 };

@@ -6,7 +6,8 @@ import {
   HeaderComponent,
   TextComponent,
 } from '../../component';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {removeCartAction} from 'redux/actions/cart';
 
 import ListProduct from './section/listProduct.sc';
 import {db} from 'helpers/Firebase';
@@ -15,6 +16,7 @@ import firestore from '@react-native-firebase/firestore';
 const CartScreen = props => {
   const cart = useSelector(state => state.cart);
   const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
   let total = 0;
 
   const orderNow = async () => {
@@ -28,6 +30,7 @@ const CartScreen = props => {
         total: total,
         created_at: firestore.FieldValue.serverTimestamp(),
         uid_buyer: auth?.user?.user?.uid,
+        buyer_name: auth?.user?.user?.email,
         uid_seller: 'hrPF4wsmyieaWtO3qlLIqLgNZ3f2',
         store: 'Miranjo Store',
       });
@@ -36,7 +39,7 @@ const CartScreen = props => {
         name: 'Pending',
         created_at: firestore.FieldValue.serverTimestamp(),
       });
-
+      dispatch(removeCartAction());
       props.navigation.navigate('Order');
     }
   };
@@ -52,7 +55,7 @@ const CartScreen = props => {
       />
       <ListProduct />
       <ButtonComponent style={styles.buttonFly} onPress={() => orderNow()}>
-        <TextComponent color="#fff">Pesan Sekarang</TextComponent>
+        <TextComponent color="#fff">Order Now!</TextComponent>
       </ButtonComponent>
       <BoxComponent style={styles.flyTotal}>
         <TextComponent color="#000">Total Rp. {total}</TextComponent>

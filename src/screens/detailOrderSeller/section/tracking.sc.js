@@ -38,7 +38,6 @@ const TrackingSection = props => {
   };
 
   const updateStatus = status => {
-    console.log('🚀 ~ file: tracking.sc.js ~ line 38 ~ status', status);
     setCurrentStatus(status);
     dispatch(
       updateOrderAction({

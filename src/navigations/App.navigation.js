@@ -10,10 +10,6 @@ const AppNavigation = ({params}) => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
   const [userType, setUserType] = useState();
-  console.log(
-    '🚀 ~ file: App.navigation.js ~ line 13 ~ AppNavigation ~ userType',
-    userType,
-  );
 
   // Handle user state changes
   async function onAuthStateChanged(user) {

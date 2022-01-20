@@ -35,14 +35,18 @@ const ListItem = props => {
             backgroundColor="blue"
             justifyContent="center"
             alignItems="center">
-            <TextComponent color="#fff">M</TextComponent>
+            <TextComponent color="#fff">
+              {item?.name?.charAt(0).toUpperCase()}
+            </TextComponent>
           </BoxComponent>
           <BoxComponent width={'60%'} justifyContent="center">
-            <TextComponent>Miranjo Store</TextComponent>
-            <TextComponent>Hello. pesanan ini...</TextComponent>
+            <TextComponent>{item?.name}</TextComponent>
+            <TextComponent>{item?.preview}</TextComponent>
           </BoxComponent>
           <BoxComponent width={'20%'} justifyContent="center">
-            <TextComponent>09:00 AM</TextComponent>
+            <TextComponent>
+              {moment.unix(item?.date?.seconds).format('HH:mm A')}
+            </TextComponent>
           </BoxComponent>
         </RowComponent>
       </ButtonComponent>

@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import moment from 'moment';
 const ListItem = props => {
-  const {item, navigation, menuAction} = props;
+  const {item, navigation, state} = props;
 
   const onNavigate = useCallback(() => {
     navigation.navigate('DetailProduct', item);
@@ -26,7 +26,7 @@ const ListItem = props => {
           justifyContent="center"
           alignItems="center">
           <TextComponent size={10} color="#fff">
-            M
+            {item?.name?.charAt(0).toUpperCase()}
           </TextComponent>
         </BoxComponent>
         <BoxComponent
@@ -38,7 +38,7 @@ const ListItem = props => {
           shadow
           padding={10}
           justifyContent="center">
-          <TextComponent>{item.chat}</TextComponent>
+          <TextComponent>{item.message}</TextComponent>
         </BoxComponent>
       </RowComponent>
     );
@@ -55,14 +55,14 @@ const ListItem = props => {
           shadow
           padding={10}
           justifyContent="center">
-          <TextComponent color="#fff">{item.chat}</TextComponent>
+          <TextComponent color="#fff">{item.message}</TextComponent>
         </BoxComponent>
       </RowComponent>
     );
   };
   return (
     <BoxComponent mtop={5} width={'100%'} padding={10}>
-      {item.user ? ourChat() : otherChat()}
+      {state?.auth?.user?.user?.uid === item?.uid ? ourChat() : otherChat()}
     </BoxComponent>
   );
 };

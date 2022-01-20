@@ -14,6 +14,10 @@ const DetailOrder = props => {
   const {
     route: {params},
   } = props;
+
+  const directToChat = () => {
+    props.navigation.navigate('DetailChat', params);
+  };
   return (
     <>
       <HeaderComponent
@@ -26,7 +30,7 @@ const DetailOrder = props => {
         <ProductListSection {...params} />
         <TrackingSection {...params} />
       </BoxComponent>
-      <ButtonComponent style={styles.buttonFly} onPress={() => {}}>
+      <ButtonComponent style={styles.buttonFly} onPress={() => directToChat()}>
         <TextComponent color="#fff">Tanya Penjual</TextComponent>
       </ButtonComponent>
     </>

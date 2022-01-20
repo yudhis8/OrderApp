@@ -1,12 +1,18 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Text, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {getListChatAction} from 'redux/actions/chat';
 // import {archived, favorite} from '../../../redux/actions/note';
 import ListItem from './listItem.sc';
 
 const ListChatSection = props => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getListChatAction('chats'));
+  }, []);
+
   const setAction = useCallback(
     (type, data) => {
       // if (type == 1) {
@@ -20,7 +26,7 @@ const ListChatSection = props => {
   return (
     <>
       <FlatList
-        data={[1, 2]}
+        data={state?.chat?.chats}
         renderItem={({item, index}) => {
           return (
             <ListItem

@@ -7,7 +7,6 @@ import ListItem from './listItem.sc';
 
 const ListOrder = props => {
   const state = useSelector(state => state);
-  console.log('🚀 ~ file: listOrder.sc.js ~ line 10 ~ state', state.order);
 
   const dispatch = useDispatch();
   const setAction = useCallback((type, data) => {}, [dispatch]);
